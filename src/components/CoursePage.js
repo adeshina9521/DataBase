@@ -1,20 +1,13 @@
 import React from "react";
 import {getCourses} from "../api/courseApi.js"
 
-class CoursePage extends React.Component{
-    state = {
-        courses: []
-    };
-
-
-    componentDidMount(){
-        getCourses().then(courses => this.setState({courses: courses}))
-    };
-    
-
-
-
-    render(){
+ export default function CoursePage() {
+     const [courses, setCourses] = React.useState([])
+  
+    React.useEffect(function(){
+        getCourses().then(data=> setCourses(data))
+    },[])
+       
         return (
         <>
                 <h2>Courses</h2>
@@ -27,12 +20,12 @@ class CoursePage extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                                      {this.state.courses.map(course =>{
+                            {courses.map(course =>{
                             return (
 
-                                 <tr>
+                                 <tr key={course.id}>
                                     <td>{course.title}</td>
-                                    <td>{course.id}</td>
+                                    <td>{course.authorId}</td>
                                     <td>{course.category}</td>
                                 </tr>
                                 )
@@ -43,11 +36,10 @@ class CoursePage extends React.Component{
                 )
               
 }
-}
-
-export default CoursePage;
 
 
+
+ 
 
 
 
