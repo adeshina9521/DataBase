@@ -7,7 +7,7 @@ export default function Header(){
     const activeStyles={color: "orange" }
     return(
         <nav>
-            <NavLink activeStyle={activeStyles} exact to="/">Home</NavLink>{" | "}<NavLink activeStyle={activeStyles}to="/courses">Courses</NavLink> | {" "}
+            <NavLink activeStyle={activeStyles} exact to="/">Home</NavLink>{" | "}<NavLink activeStyle={activeStyles}to="/courses">Courses</NavLink>{" | "}
             <NavLink activeStyle={activeStyles} to="/about">About</NavLink>
         </nav>
     )
