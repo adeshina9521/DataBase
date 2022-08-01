@@ -1,12 +1,14 @@
 import React from "react"
+import {Prompt} from "react-router-dom"
 
-const ManageCoursePage= props => {
+const ManageCoursePage = props => {
     return(
         <>
-        <h1>Manage Course Page <h1>
-        {props.match.slug}
+        <h2>Manage Course Page </h2>
+        <Prompt when={true} message="Are you sure you want to leave this page" />
+        {props.match.params.slug}
         </>
     )
-}
+} 
 
-export default: CourseManagePage
+export default ManageCoursePage;
