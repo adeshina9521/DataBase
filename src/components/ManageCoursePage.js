@@ -1,6 +1,8 @@
 import React from "react"
 import {Prompt} from "react-router-dom"
 import CourseForm from "./CourseForm"
+import * as CourseApi from "../api/courseApi"
+import { toast } from "react-toastify"
 
 
 const ManageCoursePage = props => {
@@ -20,7 +22,13 @@ const ManageCoursePage = props => {
         setCourse(updatedCourse)
     }
 
-
+    function handleSubmit(event){
+        event.preventDefault();
+        CourseApi.saveCourse(course).then(()=> {
+            props.history.push("/courses");
+            toast.success("Course Saved")
+        })
+    }
     // function handleChange(event){
     //  const {name, value} = event.target
     //     setCourse(function(prevCourse){
@@ -41,7 +49,8 @@ const ManageCoursePage = props => {
         {/* {props.match.params.slug} */}
         <CourseForm
             course={course}
-            onChange={handleChange}/>
+            onChange={handleChange} 
+            onSubmit={handleSubmit}/>
         </>
     )
 } 
