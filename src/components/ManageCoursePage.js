@@ -7,6 +7,7 @@ import { toast } from "react-toastify"
 
 const ManageCoursePage = props => {
 
+    const [errors, setErrors] = React.useState({})
     const [course, setCourse] = React.useState({
         id: null,
         slug: "",
@@ -21,9 +22,18 @@ const ManageCoursePage = props => {
                         }
         setCourse(updatedCourse)
     }
+    function formIsValid(){
+        const _errors = {};
+        if(!course.title) _errors.title = "Title is Required"
+        if(!course.authorId) _errors.authorId = "Author ID is Required"
+        if(!course.category) _errors.category = "Category is Required"
+        setErrors(_errors)
+        return Object.keys(_errors).length === 0
+    }
 
     function handleSubmit(event){
         event.preventDefault();
+        if(!formIsValid()) return;
         CourseApi.saveCourse(course).then(()=> {
             props.history.push("/courses");
             toast.success("Course Saved")
@@ -40,14 +50,13 @@ const ManageCoursePage = props => {
     //     })
     // }
 
-
-
     return(
         <>
         <h2>Manage Course Page </h2>
         <Prompt when={true} message="Are you sure you want to leave this page" />
         {/* {props.match.params.slug} */}
         <CourseForm
+            errors={errors}
             course={course}
             onChange={handleChange} 
             onSubmit={handleSubmit}/>
