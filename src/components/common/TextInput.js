@@ -2,9 +2,12 @@ import React from "react"
 import PropTypes from "prop-types"
 
 export default function TextInput(props){
-
+  let wrapperClass = "form-group"
+if (props.error.lenght > 0){
+    wrapperClass += "has-error"
+}
     return(
-        <div className="form-group">
+        <div className={wrapperClass}>
         <label htmlFor={props.id}>{props.label}</label>
         <div className="field">
           <input
@@ -15,6 +18,7 @@ export default function TextInput(props){
             value={props.value}
             onChange={props.onChange}
           />
+          {props.error && <div className="alert alert -danger">{props.error}</div>}
         </div>
       </div>
     )

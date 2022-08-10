@@ -12,7 +12,7 @@ function CourseForm(props) {
             value={props.course.title}
             onChange={props.onChange}
             error={props.errors.title}
-          />
+            />
       
       <div className="form-group">
         <label htmlFor="author">Author</label>
@@ -20,7 +20,7 @@ function CourseForm(props) {
           <select
             id="author"
             name="authorId"
-            value={props.course.authorId}
+            value={props.course.authorId || ""}
             className="form-control"
             onChange={props.onChange}
 
@@ -30,7 +30,9 @@ function CourseForm(props) {
             <option value="2">Scott Allen</option>
           </select>
         </div>
-      {props.errors.authorId && (<div className="alert alert-danger">{props.error.authorId}</div>)}
+      {props.errors.authorId && (
+        <div className="alert alert-danger">{props.error.authorId}</div>
+        )}
       </div>
 
         <TextInput
@@ -48,12 +50,13 @@ function CourseForm(props) {
   );
 }
 
-export default CourseForm;
 
 CourseForm.propTypes = {
-  course:PropTypes.object.isRequired,
-  onSubmit:PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
+  course: PropTypes.object.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.string.isRequired,
   errors: PropTypes.object.isRequired
-
+ 
 }
+
+export default CourseForm;
