@@ -11,7 +11,7 @@ export function getCourseBySlug(slug) {
   return fetch(baseUrl + "?slug=" + slug)
     .then(response => {
       if (!response.ok) throw new Error("Network response was not ok.");
-      console.log(response.json())
+      // console.log(response.json())
       return response.json().then(courses => {
         if (courses.length !== 1) throw new Error("Course not found: " + slug);
         return courses[0]; // should only find one course for a given slug, so return it.

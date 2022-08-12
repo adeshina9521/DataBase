@@ -15,18 +15,26 @@ const ManageCoursePage = props => {
         authorId: null,
         category: ""
     })
-
-    React.useEffect(function(){
-        const slug=props.match.params.slug;
-        if (slug){
-            courseApi.getCourseBySlug(slug).then(data => setCourse(data))
+    React.useEffect(() => {
+        const slug = props.match.params.slug; // from the path `/courses/:slug`
+        if (slug) {
+          courseApi.getCourseBySlug(slug).then(_course => setCourse(_course));
         }
-    }, [props.match.params.slug])
+      }, [props.match.params.slug]);
+
+
+    // React.useEffect(() => {
+    //     const slug = props.match.params.slug;
+    //     if (slug){
+    //         courseApi.getCourseBySlug(slug).then(_course => setCourse(_course))
+    //     }
+    // }, [props.match.params.slug])
+
     function handleChange({target}){
-        const updatedCourse = {...course, 
-                            [target.name]: target.value
-                        }
-        setCourse(updatedCourse)
+        setCourse({
+            ...course, 
+            [target.name]: target.value
+        })
     }
 
 
@@ -41,17 +49,7 @@ const ManageCoursePage = props => {
         // Form is valid if the errors object has no properties
         return Object.keys(newErrors).length === 0;
       }
-    // function formIsValid(){
-    //     const _errors = {};
-    //     if (!course.title) _errors.title = "Title is Required";
-    //     if (!course.authorId) _errors.authorId = "Author ID is Required";
-    //     if (!course.category) _errors.category = "Category is Required";
-    //     setErrors(_errors)
-    //     return Object.keys(_errors).length === 0;
-    // }
-
-
-    function handleSubmit(event){
+      function handleSubmit(event){
         event.preventDefault();
         if (!formIsValid()) return;
         courseApi.saveCourse(course).then(()=> {
@@ -79,7 +77,8 @@ const ManageCoursePage = props => {
             errors={errors}
             course={course}
             onChange={handleChange} 
-            onSubmit={handleSubmit}/>
+            onSubmit={handleSubmit}
+            />
         </>
     )
 } 

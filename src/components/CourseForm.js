@@ -31,7 +31,7 @@ function CourseForm(props) {
           </select>
         </div>
       {props.errors.authorId && (
-        <div className="alert alert-danger">{props.error.authorId}</div>
+        <div className="alert alert-danger">{props.errors.authorId}</div>
         )}
       </div>
 

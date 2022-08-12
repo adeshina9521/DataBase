@@ -1,10 +1,10 @@
 import React from "react"
-import PropTypes from "prop-types"
+import PropTypes from 'prop-types';
 
 export default function TextInput(props){
   let wrapperClass = "form-group"
 if (props.error.lenght > 0){
-    wrapperClass += "has-error"
+   wrapperClass += " has-error";
 }
     return(
         <div className={wrapperClass}>
@@ -18,9 +18,10 @@ if (props.error.lenght > 0){
             value={props.value}
             onChange={props.onChange}
           />
-          {props.error && <div className="alert alert -danger">{props.error}</div>}
         </div>
+        {props.error && <div className="alert alert-danger">{props.error}</div>}
       </div>
+
     )
 }
 
