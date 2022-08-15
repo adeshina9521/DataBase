@@ -68,6 +68,7 @@ const ManageCoursePage = props => {
     //     })
     // }
 
+    
     return(
         <>
         <h2>Manage Course Page </h2>
