@@ -1,4 +1,4 @@
-import {EventEmitter} from "event"
+import {EventEmitter} from "events"
 import Dispatcher from  "../appDispatcher"
 import actionType from "../actions/actionTypes"
 

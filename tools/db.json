@@ -2,7 +2,7 @@
   "courses": [
     {
       "id": 1,
-      "title": "Securing React Apps with Auth02",
+      "title": "Securing React Apps with Auth0",
       "slug": "react-auth0-authentication-security",
       "authorId": 1,
       "category": "JavaScript"
@@ -72,19 +72,19 @@
     },
     {
       "id": 11,
-      "slug": "dfdfd",
-      "title": "dfdfd",
+      "slug": "tom",
+      "title": "tom",
       "authorId": 1,
-      "category": "adfdf",
-      "createdAt": 1660125765216
+      "category": "cat",
+      "createdAt": 1660662757075
     },
     {
       "id": 12,
-      "slug": "sdfdf",
-      "title": "sdfdf",
+      "slug": "yam",
+      "title": "yam",
       "authorId": 2,
-      "category": "dfdfaaad",
-      "createdAt": 1660297305720
+      "category": "Egg",
+      "createdAt": 1660664081228
     }
   ],
   "authors": [

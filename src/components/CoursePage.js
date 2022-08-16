@@ -1,5 +1,6 @@
 import React from "react";
-import {getCourses} from "../api/courseApi"
+// import {getCourses} from "../api/courseApi"
+import courseStore from "../stores/courseStore"
 import CourseList from "./CourseList";
 import {Link} from  "react-router-dom"
 
@@ -7,7 +8,7 @@ import {Link} from  "react-router-dom"
      const [courses, setCourses] = React.useState([])
   
     React.useEffect(function(){
-        getCourses().then(data=> setCourses(data))
+        setCourses(courseStore.getCourses())
     },[])
        
         return (
