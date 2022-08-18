@@ -1,6 +1,6 @@
 import {EventEmitter} from "events"
 import Dispatcher from  "../appDispatcher"
-import actionType from "../actions/actionTypes"
+import actionTypes from "../actions/actionTypes"
 
 const CHANGE_EVENT = "change"
 let _courses = [];
@@ -32,8 +32,12 @@ const store = new CourseStore();
 
 Dispatcher.register(action => {
     switch(action.actionType){
-        case actionType.CREATE_COURSE:
+        case actionTypes.CREATE_COURSE:
             _courses.push(action.course);
+            store.emitChange();
+        break;
+        case actionTypes.LOAD_COURSES:
+            _courses = action.courses;
             store.emitChange();
         break;
         default:
