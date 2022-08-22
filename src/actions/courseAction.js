@@ -3,11 +3,11 @@ import * as courseApi from "../api/courseApi"
 import actionTypes from "./actionTypes"
 
 export function saveCourse(course){
- return   courseApi.saveCourse(course).then(saveCourse => {
+ return   courseApi.saveCourse(course).then(savedCourse => {
     // hey dispatcher, go tell all the stores that a course was just created    
     dispatcher.dispatch({
-            actionType: actionTypes.CREATE_COURSE,
-            course: saveCourse
+            actionType: course.id ? actionTypes.UPDATE_COURSE : actionTypes.CREATE_COURSE,
+            course: savedCourse
         })
     })
 }
