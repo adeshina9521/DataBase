@@ -20,4 +20,11 @@ export function loadCourses(){
                 courses: courses
             })
         })
+}export function deleteCourse(id){
+    return courseApi.deleteCourse(id).then(courses => {
+        dispatcher.dispatch({
+                actionType: actionTypes.DELETE_COURSE,
+                        id: id
+            })
+        })
 }
